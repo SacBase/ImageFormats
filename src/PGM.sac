@@ -145,8 +145,7 @@ int[.,.], int readPGM(File stream)
 PGM openPGM(string name)
 {
     err, fp = fopen(name, "rb");
-
-    if (fail(err) == true) {
+    if (fail(err)) {
         RuntimeError::error((int)err,
             "openPGM: Failed to open file %s for reading",
             name);
@@ -165,8 +164,7 @@ PGM openPGM(string name)
 void writePGM(int[2:shp] image, int[2] shp, int mval, bool binary, string name)
 {
     err, fp = fopen(name, "wb");
-
-    if (fail(err) == true) {
+    if (fail(err)) {
         RuntimeError::error((int)err,
             "writePGM: Failed to open file %s for reading",
             name);

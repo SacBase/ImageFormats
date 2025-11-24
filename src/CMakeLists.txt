@@ -57,11 +57,8 @@ FOREACH (name ${SAC_SRC})
     SET (tree "${DLL_BUILD_DIR}/tree/${TARGET_ENV}/${SBI}/lib${dst}Tree${VARIANT}${TREE_DLLEXT}")
 
     RESOLVE_SAC_DEPS_AS_TARGETS ("${name}" "<TARGET>-module-<NAME>" target_list object_list source_list)
-    MESSAGE ("Targets of ${name} => ${target_list}")
-    MESSAGE ("Objects of ${name} => ${object_list}")
-    MESSAGE ("Sources of ${name} => ${source_list}")
-
     LIST (APPEND deps_list ${target_list} ${object_list} ${source_list})
+    MESSAGE (STATUS "Dependencies of ${name} are: ${deps_list}")
     UNSET (target_list)
     UNSET (object_list)
     UNSET (source_list)

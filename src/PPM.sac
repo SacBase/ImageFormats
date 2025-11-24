@@ -22,13 +22,13 @@ external Color8[.,.] readStream(File &stream);
     #pragma refcounting [0]
     #pragma linksign [1,2]
 
-external void writeStream(TermFile &stream , Color8[.,.] image,
+external void writeStream(TermFile &stream, Color8[.,.] image,
                           int[2] shp, bool binary);
     #pragma effect Terminal::TheTerminal
     #pragma linkobj "src/PPM/array2ppm.o"
     #pragma linkname "SAC_PPM_array2ppm"
 
-external void writeStream(File &stream , Color8[.,.] image,
+external void writeStream(File &stream, Color8[.,.] image,
                           int[2] shp, bool binary);
     #pragma effect FileSystem::TheFileSystem
     #pragma linkobj "src/PPM/array2ppm.o"
@@ -42,8 +42,7 @@ inline Color8[.,.] readPPM()
 inline Color8[.,.] readPPM(string name)
 {
     err, fp = fopen(name, "r");
-
-    if (SysErr::fail(err) == true) {
+    if (SysErr::fail(err)) {
         RuntimeError::error((int)err,
             "Error occured when trying to open file %s for reading",
             name);
@@ -62,8 +61,7 @@ inline void printPPM(Color8[2:shp] img)
 inline void printPPM(Color8[2:shp] img, string name, bool binary)
 {
     err, fp = fopen(name, "w+");
-
-    if (SysErr::fail(err) == true) {
+    if (SysErr::fail(err)) {
         RuntimeError::error((int)err,
             "Error occured when trying to open file %s for writing",
             name);

@@ -66,6 +66,5 @@ int showPNG(Color8[.,.] array)
     cmd = sprintf("(display '%s' || xv '%s' || firefox '%s')",
                   name, name, name);
     _ = system(cmd);
-
     return ret;
 }
