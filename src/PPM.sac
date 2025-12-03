@@ -83,7 +83,7 @@ Color8[h,w] readPPMf (TF &fp, string name)                  \
     if (num_read != 2)                                      \
          RuntimeError::error(0,                             \
             "Failed to read width and height of the image");\
-    data = genarray ([w,h,3], 0);                           \
+    data = genarray ([h,w,3], 0);                           \
                                                             \
     /*                                                      \
      * Read out the maximum value                           \
@@ -156,9 +156,9 @@ void writePPMf (TF &fp, Color8[h,w] img, bool binary)       \
                                                             \
     for(i = 0; i < h; i++) {                                \
       for (j = 0; j < w; j++) {                             \
-        fprintf(fp, "%d %d %d", toi (img[i,j])[0],          \
-                                toi (img[i,j])[1],          \
-                                toi (img[i,j])[2]);         \
+        fprintf(fp, "%d %d %d", red (img[i,j])[0],          \
+                                green (img[i,j])[1],        \
+                                blue (img[i,j])[2]);        \
                                                             \
         if (j != w-1) {                                     \
           fprintf(fp, " ");                                 \
@@ -179,9 +179,9 @@ void writePPMf (TF &fp, Color8[h,w] img, bool binary)       \
                                                             \
     for(i = 0; i < h; i++) {                                \
       for (j = 0; j < w; j++) {                             \
-        fprintf(fp, "%c%c%c", tochar (toi (img[i,j])[0]),   \
-                              tochar (toi (img[i,j])[1]),   \
-                              tochar (toi (img[i,j])[2]));  \
+        fprintf(fp, "%c%c%c", tochar (red (img[i,j])[0]),   \
+                              tochar (green (img[i,j])[1]), \
+                              tochar (blue (img[i,j])[2])); \
                                                             \
       }                                                     \
     }                                                       \
