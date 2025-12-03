@@ -11,8 +11,6 @@ SET (C_DEPS_SRC
     src/PNG/array2png.c
     src/PNG/imshow.c
     src/PNG/png2array.c
-    src/PPM/array2ppm.c
-    src/PPM/ppm2array.c
 )
 
 # SaC files
@@ -99,7 +97,7 @@ FOREACH (name ${SAC_SRC})
     # The current system cannot find Stdlib files. This is a really ugly solution:
     # we manually remove known Stdlib dependencies, and assume they exist.
     # I don't know how to fix this...
-    LIST(FILTER deps_list EXCLUDE REGEX ".*(Array|Color8|File|FileSystem|Process|RuntimeError|ScalarArith|String|SysErr|TermFile|Terminal|World)")
+    LIST(FILTER deps_list EXCLUDE REGEX ".*(Structures|Array|Color8|File|FileSystem|Process|RuntimeError|ScalarArith|String|SysErr|TermFile|Terminal|World)")
 
     # Make sure that we have the directory we are changing to.
     FILE (MAKE_DIRECTORY "${dir}")
